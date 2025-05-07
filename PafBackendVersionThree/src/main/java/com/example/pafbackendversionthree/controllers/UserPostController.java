@@ -48,8 +48,7 @@ public class UserPostController {
             return ResponseEntity.ok(post);
         } catch (Exception e) {
             // Log the exception at controller level
-            System.err.println("Controller error when fetching post with ID " + postId + ": " + e.getMessage());
-            
+
             // Create a simplified error response
             Map<String, String> errorResponse = new HashMap<>();
             errorResponse.put("message", "Failed to fetch post due to a server error");
