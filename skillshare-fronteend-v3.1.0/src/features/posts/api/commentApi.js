@@ -29,4 +29,18 @@ export default {
     }
   },
 
+  // Delete a comment
+  async deleteComment(commentId, userId) {
+    try {
+      await apiClient.delete(`/comments/${commentId}`);
+      return true;
+    } catch (error) {
+      let errorMessage = "Failed to delete comment";
+      if (error.response) {
+        errorMessage = error.response.data.message || errorMessage;
+      }
+      throw new Error(errorMessage);
+    }
+  },
+
   
