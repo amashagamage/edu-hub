@@ -103,4 +103,17 @@ export default {
     }
   },
 
- 
+  // Get comment count for a post
+  async getCommentCountForPost(postId) {
+    try {
+      const response = await apiClient.get(`/comments/count/${postId}`);
+      return response.data.count;
+    } catch (error) {
+      let errorMessage = "Failed to fetch comment count";
+      if (error.response) {
+        errorMessage = error.response.data.message || errorMessage;
+      }
+      throw new Error(errorMessage);
+    }
+  }
+};
