@@ -43,7 +43,8 @@ export default {
       throw new Error(errorMessage);
     }
   },
-// Get likes by post ID
+
+  // Get likes by post ID
   async getLikesByPostId(postId) {
     try {
       const response = await apiClient.get(`/likes/post/${postId}`);
@@ -115,4 +116,3 @@ export default {
     }
   }
 };
-  
