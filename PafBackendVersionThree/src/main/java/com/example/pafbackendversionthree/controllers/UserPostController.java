@@ -79,12 +79,7 @@ public class UserPostController {
     }
 
     // Get posts by a specific user
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<?> getPostsByUser(@PathVariable String userId) {
-        try {
-            List<UserPostDto> posts = userPostService.getPostsByUser(userId);
-            return ResponseEntity.ok(posts);
-        } catch (Exception e) {
+
             // Log the exception at controller level
             System.err.println("Controller error when fetching posts for user " + userId + ": " + e.getMessage());
             
