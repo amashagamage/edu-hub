@@ -41,7 +41,12 @@ public class UserPostController {
     }
 
     // Get a single post by ID
-
+    @GetMapping("/{postId}")
+    public ResponseEntity<?> getPostById(@PathVariable String postId) {
+        try {
+            UserPostDto post = userPostService.getPostById(postId);
+            return ResponseEntity.ok(post);
+        } catch (Exception e) {
             // Log the exception at controller level
             System.err.println("Controller error when fetching post with ID " + postId + ": " + e.getMessage());
             
