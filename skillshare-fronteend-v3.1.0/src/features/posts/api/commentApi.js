@@ -57,4 +57,32 @@ export default {
     }
   },
 
+  // Get comments by post ID
+  async getCommentsByPostId(postId) {
+    try {
+      const response = await apiClient.get(`/comments/post/${postId}`);
+      return response.data;
+    } catch (error) {
+      let errorMessage = "Failed to fetch comments for this post";
+      if (error.response) {
+        errorMessage = error.response.data.message || errorMessage;
+      }
+      throw new Error(errorMessage);
+    }
+  },
+
+  // Get comments by user ID
+  async getCommentsByUserId(userId) {
+    try {
+      const response = await apiClient.get(`/comments/user/${userId}`);
+      return response.data;
+    } catch (error) {
+      let errorMessage = "Failed to fetch user's comments";
+      if (error.response) {
+        errorMessage = error.response.data.message || errorMessage;
+      }
+      throw new Error(errorMessage);
+    }
+  },
+
  
