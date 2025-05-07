@@ -34,11 +34,7 @@ public class UserPostController {
     }
 
     // Delete a post by ID
-    @DeleteMapping("/{postId}")
-    public ResponseEntity<Void> deletePost(@PathVariable String postId) {
-        userPostService.deletePost(postId);
-        return ResponseEntity.noContent().build();
-    }
+
 
     // Get a single post by ID
     @GetMapping("/{postId}")
