@@ -99,5 +99,115 @@ const LikeCommentContainer = ({ postId, postedUserId }) => {
       zIndex: 1000
     }
   };
+   // Close reaction menu when clicking outside
+   useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (showReactionMenu) {
+        setShowReactionMenu(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [showReactionMenu]);
+
+  // Fetch like count and status on mount
+  useEffect(() => {
+    fetchLikeData();
+    
+    // Fetch comment count
+    const fetchCommentCount = async () => {
+      try {
+        const commentCountData = await commentApi.getCommentCountForPost(postId);
+        setCommentCount(commentCountData);
+      } catch (error) {
+        console.error("Failed to fetch comment count:", error);
+      }
+    };
+    
+    fetchCommentCount();
+  }, [postId, userId]);
+  
+  // Function to fetch like data that can be called multiple times
+  const fetchLikeData = async () => {
+    try {
+      setLoading(prev => ({ ...prev, likes: true }));
+      setError(prev => ({ ...prev, likes: null }));
+      
+      const summary = await likeApi.getLikeSummaryForPost(postId, userId);
+      setLikeCount(summary.count);
+      setIsLiked(summary.liked);
+      
+      // Set reaction type if user has reacted
+      if (summary.liked && summary.reactionType) {
+        setCurrentReaction(summary.reactionType);
+      } else {
+        setCurrentReaction(null);
+      }
+
+      // Set reaction counts if available in the API response
+      if (summary.reactionCounts) {
+        setReactionCounts(summary.reactionCounts);
+      } else {
+        // Fallback if API doesn't provide detailed counts
+        setReactionCounts({
+          like: Math.floor(summary.count * 0.5),
+          heart: Math.floor(summary.count * 0.2),
+          care: Math.floor(summary.count * 0.1),
+          haha: Math.floor(summary.count * 0.1),
+          wow: Math.floor(summary.count * 0.05),
+          angry: Math.floor(summary.count * 0.05),
+        });
+      }
+      
+      console.log("Fetched like data:", summary);
+    } catch (error) {
+      console.error("Failed to fetch like data:", error);
+      setError(prev => ({ ...prev, likes: error.message }));
+    } finally {
+      setLoading(prev => ({ ...prev, likes: false }));
+    }
+  };
+
+  // Fetch comments when modal opens
+  useEffect(() => {
+    if (isModalOpen) {
+      fetchComments();
+    } else {
+      // Close any open comment menus when modal closes
+      setCommentMenuOpen(null);
+      setEditingCommentId(null);
+    }
+  }, [isModalOpen,]);
+
+  // Click outside handler for comment menu
+  useEffect(() => {
+    const handleClickOutside = () => {
+      setCommentMenuOpen(null);
+    };
+
+    if (commentMenuOpen !== null) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [commentMenuOpen]);
+
+  const fetchComments = async () => {
+    try {
+      setLoading(prev => ({ ...prev, comments: true }));
+      setError(prev => ({ ...prev, comments: null }));
+      
+      const fetchedComments = await commentApi.getCommentsByPostId(postId);
+      setComments(fetchedComments);
+    } catch (error) {
+      console.error("Failed to fetch comments:", error);
+      setError(prev => ({ ...prev, comments: error.message }));
+    } finally {
+      setLoading(prev => ({ ...prev, comments: false }));
+    }
+  };
 
  
