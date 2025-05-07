@@ -85,4 +85,22 @@ export default {
     }
   },
 
+  // Get a comment by ID
+  async getCommentById(commentId) {
+    try {
+      const response = await apiClient.get(`/comments/${commentId}`);
+      return response.data;
+    } catch (error) {
+      let errorMessage = "Failed to fetch comment";
+      if (error.response) {
+        if (error.response.status === 404) {
+          errorMessage = "Comment not found";
+        } else {
+          errorMessage = error.response.data.message || errorMessage;
+        }
+      }
+      throw new Error(errorMessage);
+    }
+  },
+
  
