@@ -51,7 +51,13 @@ public class UserPostController {
             System.err.println("Controller error when fetching post with ID " + postId + ": " + e.getMessage());
 
             // Create a simplified error response
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("message", "Failed to fetch post due to a server error");
+            errorResponse.put("status", "500");
 
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+        }
+    }
 
     // Get all posts
     @GetMapping
