@@ -20,11 +20,7 @@ public class UserPostController {
     private UserPostService userPostService;
 
     // Create a new post
-    @PostMapping
-    public ResponseEntity<UserPostDto> createPost(@RequestParam String userId, @RequestBody CreateUpdatePostDto createUpdatePostDto) {
-        UserPostDto createdPost = userPostService.createPost(userId, createUpdatePostDto);
-        return ResponseEntity.ok(createdPost);
-    }
+
 
     // Update an existing post
     @PutMapping("/{postId}")
