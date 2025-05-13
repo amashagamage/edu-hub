@@ -79,7 +79,10 @@ const PostCard = ({ post, onUpdateClicked, onDeleteClicked }) => {
       </div>
 
       {/* Content */}
-      
+      <div className="px-4 mb-4">
+        <h4 className="font-semibold mb-2">{post.title}</h4>
+        <p className="text-gray-600">{post.description}</p>
+      </div>
 
       {/* Media Carousel */}
       <div className="relative">
