@@ -59,7 +59,7 @@ const CreateProgressPage = () => {
     'OVERWHELMED'
   ];
 
-  // Validation patterns
+  // Validation patterns code
   const validationPatterns = {
     title: /^.{5,100}$/,
     content: /^.{10,1000}$/,
