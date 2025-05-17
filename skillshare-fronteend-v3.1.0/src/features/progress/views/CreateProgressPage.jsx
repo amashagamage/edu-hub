@@ -246,13 +246,13 @@ const CreateProgressPage = () => {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <ToastContainer position="top-right" autoClose={3000} />
       
-      <h1 className="text-3xl font-bold text-indigo-700 mb-6">Create Progress Update</h1>
+      <h1 className="text-3xl font-bold text-green-600 mb-6">Create Progress Update</h1>
       
       <form onSubmit={handleSubmit} className="space-y-6 bg-white/90 p-8 rounded-xl shadow-lg border border-gray-100">
         {/* Basic Information */}
         <div className="space-y-4">
           <h2 className="text-xl font-semibold text-gray-800 border-b pb-2 flex items-center">
-            <TrendingUp className="mr-2 h-5 w-5 text-indigo-600" />
+            <TrendingUp className="mr-2 h-5 w-5 text-green-600" />
             Basic Information
           </h2>
           
@@ -265,7 +265,7 @@ const CreateProgressPage = () => {
               name="title"
               value={formData.title}
               onChange={handleInputChange}
-              className={`w-full px-3 py-2 border rounded-md ${errors.title ? 'border-red-500' : 'border-gray-300'} focus:ring-indigo-500 focus:border-indigo-500 shadow-sm`}
+              className={`w-full px-3 py-2 border rounded-md ${errors.title ? 'border-red-500' : 'border-gray-300'} focus:ring-green-500 focus:border-green-500 shadow-sm`}
               placeholder="What did you work on?"
             />
             {errors.title && <p className="text-red-500 text-xs mt-1">{errors.title}</p>}
@@ -280,7 +280,7 @@ const CreateProgressPage = () => {
               value={formData.content}
               onChange={handleInputChange}
               rows={4}
-              className={`w-full px-3 py-2 border rounded-md ${errors.content ? 'border-red-500' : 'border-gray-300'} focus:ring-indigo-500 focus:border-indigo-500 shadow-sm`}
+              className={`w-full px-3 py-2 border rounded-md ${errors.content ? 'border-red-500' : 'border-gray-300'} focus:ring-green-500 focus:border-green-500 shadow-sm`}
               placeholder="Describe your progress in detail..."
             ></textarea>
             {errors.content && <p className="text-red-500 text-xs mt-1">{errors.content}</p>}
@@ -301,7 +301,7 @@ const CreateProgressPage = () => {
                   value={formData.hoursSpent}
                   onChange={handleInputChange}
                   min="1"
-                  className={`w-full pl-10 pr-3 py-2 border rounded-md ${errors.hoursSpent ? 'border-red-500' : 'border-gray-300'} focus:ring-indigo-500 focus:border-indigo-500 shadow-sm`}
+                  className={`w-full pl-10 pr-3 py-2 border rounded-md ${errors.hoursSpent ? 'border-red-500' : 'border-gray-300'} focus:ring-green-500 focus:border-green-500 shadow-sm`}
                   placeholder="e.g., 3"
                 />
               </div>
@@ -316,7 +316,7 @@ const CreateProgressPage = () => {
                 name="type"
                 value={formData.type}
                 onChange={handleInputChange}
-                className={`w-full px-3 py-2 border rounded-md ${errors.type ? 'border-red-500' : 'border-gray-300'} focus:ring-indigo-500 focus:border-indigo-500 shadow-sm`}
+                className={`w-full px-3 py-2 border rounded-md ${errors.type ? 'border-red-500' : 'border-gray-300'} focus:ring-green-500 focus:border-green-500 shadow-sm`}
               >
                 <option value="">Select a type</option>
                 {progressTypes.map(type => (
@@ -338,7 +338,7 @@ const CreateProgressPage = () => {
                     onClick={() => handleInputChange({ target: { name: 'rating', value: num.toString() } })}
                     className={`w-8 h-8 flex items-center justify-center rounded-full ${
                       parseInt(formData.rating) === num 
-                        ? 'bg-yellow-400 text-white' 
+                        ? 'bg-green-500 text-white' 
                         : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
                     }`}
                   >
@@ -356,7 +356,7 @@ const CreateProgressPage = () => {
                 name="sentiment"
                 value={formData.sentiment}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500 shadow-sm"
               >
                 <option value="">Select your feeling</option>
                 {sentiments.map(sentiment => (
@@ -372,7 +372,7 @@ const CreateProgressPage = () => {
               name="isPublic"
               checked={formData.isPublic}
               onChange={handleInputChange}
-              className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
             />
             <label className="ml-2 block text-sm text-gray-700">
               Make this progress update public
@@ -383,13 +383,13 @@ const CreateProgressPage = () => {
         {/* Learning Plan Selection */}
         <div className="space-y-4">
           <h2 className="text-xl font-semibold text-gray-800 border-b pb-2 flex items-center">
-            <Book className="mr-2 h-5 w-5 text-indigo-600" />
+            <Book className="mr-2 h-5 w-5 text-green-600" />
             Learning Plan
           </h2>
           
           {isLoadingPlans ? (
             <div className="flex justify-center">
-              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-indigo-600"></div>
+              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-green-600"></div>
             </div>
           ) : (
             <>
@@ -401,7 +401,7 @@ const CreateProgressPage = () => {
                   name="relatedPlanId"
                   value={formData.relatedPlanId}
                   onChange={handleInputChange}
-                  className={`w-full px-3 py-2 border rounded-md ${errors.relatedPlanId ? 'border-red-500' : 'border-gray-300'} focus:ring-indigo-500 focus:border-indigo-500 shadow-sm`}
+                  className={`w-full px-3 py-2 border rounded-md ${errors.relatedPlanId ? 'border-red-500' : 'border-gray-300'} focus:ring-green-500 focus:border-green-500 shadow-sm`}
                 >
                   <option value="">Select a plan (optional)</option>
                   {plans.map(plan => (
@@ -420,7 +420,7 @@ const CreateProgressPage = () => {
                     name="learningUnitId"
                     value={formData.learningUnitId}
                     onChange={handleInputChange}
-                    className={`w-full px-3 py-2 border rounded-md ${errors.learningUnitId ? 'border-red-500' : 'border-gray-300'} focus:ring-indigo-500 focus:border-indigo-500 shadow-sm`}
+                    className={`w-full px-3 py-2 border rounded-md ${errors.learningUnitId ? 'border-red-500' : 'border-gray-300'} focus:ring-green-500 focus:border-green-500 shadow-sm`}
                   >
                     <option value="">Select a unit</option>
                     {units.map(unit => (
@@ -447,7 +447,7 @@ const CreateProgressPage = () => {
                 type="text"
                 value={challenge}
                 onChange={(e) => handleListChange('challenges', index, e.target.value)}
-                className={`flex-1 px-3 py-2 border rounded-md ${errors[`challenges_${index}`] ? 'border-red-500' : 'border-gray-300'} focus:ring-indigo-500 focus:border-indigo-500 shadow-sm`}
+                className={`flex-1 px-3 py-2 border rounded-md ${errors[`challenges_${index}`] ? 'border-red-500' : 'border-gray-300'} focus:ring-green-500 focus:border-green-500 shadow-sm`}
                 placeholder="What challenges did you face?"
               />
               <button
@@ -486,7 +486,7 @@ const CreateProgressPage = () => {
                 type="text"
                 value={achievement}
                 onChange={(e) => handleListChange('achievements', index, e.target.value)}
-                className={`flex-1 px-3 py-2 border rounded-md ${errors[`achievements_${index}`] ? 'border-red-500' : 'border-gray-300'} focus:ring-indigo-500 focus:border-indigo-500 shadow-sm`}
+                className={`flex-1 px-3 py-2 border rounded-md ${errors[`achievements_${index}`] ? 'border-red-500' : 'border-gray-300'} focus:ring-green-500 focus:border-green-500 shadow-sm`}
                 placeholder="What did you accomplish?"
               />
               <button
@@ -524,7 +524,7 @@ const CreateProgressPage = () => {
           </button>
           <button
             type="submit"
-            className={`px-6 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+            className={`px-6 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
             disabled={isSubmitting}
           >
             {isSubmitting ? (

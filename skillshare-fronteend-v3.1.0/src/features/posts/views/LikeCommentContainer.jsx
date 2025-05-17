@@ -37,7 +37,7 @@ Modal.setAppElement("#root"); // Adjust this to match your app's root element ID
 
 // Define reaction types and their icons
 const REACTIONS = {
-  LIKE: { id: 'like', icon: ThumbsUp, color: 'text-blue-500', label: 'Like', bgColor: 'bg-blue-100' },
+  LIKE: { id: 'like', icon: ThumbsUp, color: 'text-green-500', label: 'Like', bgColor: 'bg-green-100' },
   HEART: { id: 'heart', icon: Heart, color: 'text-pink-500', label: 'Heart', bgColor: 'bg-pink-100' },
   CARE: { id: 'care', icon: 'care', color: 'text-yellow-500', label: 'Care', bgColor: 'bg-yellow-100', emoji: '🤗' },
   HAHA: { id: 'haha', icon: 'haha', color: 'text-yellow-500', label: 'Haha', bgColor: 'bg-yellow-100', emoji: '😂' },
@@ -531,7 +531,7 @@ const LikeCommentContainer = ({ postId, postedUserId }) => {
             onMouseEnter={handleReactionMenuToggle}
             className={`flex-1 flex justify-center items-center gap-1.5 py-1.5 rounded-md transition-all ${
               isLiked
-                ? 'text-blue-600 hover:bg-blue-50'
+                ? 'text-green-600 hover:bg-green-50'
                 : 'text-gray-500 hover:bg-gray-50'
             }`}
           >
@@ -594,28 +594,28 @@ const LikeCommentContainer = ({ postId, postedUserId }) => {
       >
         <div className="flex flex-col h-full">
           {/* Modal Header */}
-          <div className="flex justify-between items-center border-b px-5 py-4 bg-gray-50">
-            <h3 className="text-lg font-semibold text-gray-800">Comments</h3>
-            <button onClick={closeModal} className="text-gray-500 hover:text-gray-700 bg-white p-1.5 rounded-full hover:bg-gray-200 transition-colors">
+          <div className="flex justify-between items-center border-b px-5 py-4 bg-gradient-to-r from-black to-green-600 text-white">
+            <h3 className="text-lg font-semibold">Comments</h3>
+            <button onClick={closeModal} className="text-white hover:text-white/80 bg-green-700 hover:bg-green-800 p-1.5 rounded-full transition-colors">
               <X size={20} />
             </button>
           </div>
           
           {/* Comment Form */}
-          <form onSubmit={handleCommentSubmit} className="p-4 border-b bg-blue-50">
+          <form onSubmit={handleCommentSubmit} className="p-4 border-b bg-black">
             <div className="flex">
               <input
                 type="text"
                 value={commentContent}
                 onChange={(e) => setCommentContent(e.target.value)}
                 placeholder="Write a comment..."
-                className="flex-grow px-4 py-3 border border-blue-200 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
+                className="flex-grow px-4 py-3 border border-green-200 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent shadow-sm"
                 disabled={loading.submitComment}
               />
               <button
                 type="submit"
                 disabled={!commentContent.trim() || loading.submitComment}
-                className="bg-blue-500 text-white px-5 rounded-r-lg hover:bg-blue-600 disabled:bg-blue-300 flex items-center justify-center shadow-sm transition-colors"
+                className="bg-green-500 text-white px-5 rounded-r-lg hover:bg-green-600 disabled:bg-green-300 flex items-center justify-center shadow-sm transition-colors"
               >
                 <Send size={18} />
               </button>
@@ -629,7 +629,7 @@ const LikeCommentContainer = ({ postId, postedUserId }) => {
           <div className="flex-grow overflow-y-auto p-4" style={{ maxHeight: "calc(80vh - 160px)" }}>
             {loading.comments ? (
               <div className="flex justify-center py-6">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
               </div>
             ) : comments.length > 0 ? (
               comments.map((comment) => (
@@ -640,7 +640,7 @@ const LikeCommentContainer = ({ postId, postedUserId }) => {
                       <textarea
                         value={editCommentContent}
                         onChange={(e) => setEditCommentContent(e.target.value)}
-                        className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-3 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                         rows={2}
                         disabled={loading.editComment}
                       />
@@ -654,7 +654,7 @@ const LikeCommentContainer = ({ postId, postedUserId }) => {
                         <button
                           onClick={() => handleUpdateComment(comment.id)}
                           disabled={!editCommentContent.trim() || loading.editComment}
-                          className="px-4 py-1.5 text-sm bg-blue-500 text-white rounded-md hover:bg-blue-600 shadow-sm"
+                          className="px-4 py-1.5 text-sm bg-green-600 text-white rounded-md hover:bg-green-700 shadow-sm"
                         >
                           {loading.editComment ? "Saving..." : "Save"}
                         </button>
@@ -673,7 +673,7 @@ const LikeCommentContainer = ({ postId, postedUserId }) => {
                           className="w-10 h-10 rounded-full mr-3 border-2 border-gray-200"
                         />
                       ) : (
-                        <div className="w-10 h-10 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full mr-3 flex items-center justify-center text-white font-bold border-2 border-gray-200">
+                        <div className="w-10 h-10 bg-gradient-to-r from-black to-green-500 rounded-full mr-3 flex items-center justify-center text-white font-bold border-2 border-gray-200">
                           {comment.user?.username?.charAt(0) || "U"}
                         </div>
                       )}
@@ -691,7 +691,7 @@ const LikeCommentContainer = ({ postId, postedUserId }) => {
                                 {canEditComment(comment.user?.id) && (
                                       <button
                                         onClick={() => handleEditStart(comment)}
-                                        className="flex items-center p-1.5 text-gray-500 hover:text-blue-500 hover:bg-blue-50 rounded-full transition-colors"
+                                        className="flex items-center p-1.5 text-gray-500 hover:text-green-500 hover:bg-green-50 rounded-full transition-colors"
                                       >
                                         <Edit size={16} />
                                       </button>
@@ -707,7 +707,7 @@ const LikeCommentContainer = ({ postId, postedUserId }) => {
                               </div>
                           </div>
                         </div>
-                        <div className="bg-gray-50 px-4 py-3 rounded-lg mt-2 border-l-4 border-blue-400">
+                        <div className="bg-gray-50 px-4 py-3 rounded-lg mt-2 border-l-4 border-green-400">
                           <p className="text-gray-700">{comment.content}</p>
                         </div>
                       </div>

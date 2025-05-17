@@ -115,20 +115,20 @@ const PlansPage = () => {
   }, [plans, searchQuery, selectedCategory, selectedSkillLevel, sortBy]);
 
   return (
-    <div className="bg-gradient-to-br from-indigo-50 via-white to-blue-50 min-h-screen pb-12">
+    <div className="bg-gradient-to-br from-green-50 via-white to-green-50 min-h-screen pb-12">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-12 px-6 shadow-lg rounded-b-3xl mb-8">
+      <div className="bg-gradient-to-r from-green-600 to-green-700 text-white py-12 px-6 shadow-lg rounded-b-3xl mb-8">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-6 md:mb-0">
               <h1 className="text-4xl font-bold mb-2">Learning Plans</h1>
-              <p className="text-blue-100 max-w-xl">
+              <p className="text-green-100 max-w-xl">
                 Discover expert-crafted learning paths to master new skills. Find plans that match your goals or create your own to share with the community.
               </p>
             </div>
             <Link 
               to="/create-plan" 
-              className="flex items-center space-x-2 bg-white text-blue-700 font-bold py-3 px-6 rounded-lg hover:bg-blue-50 transition-all shadow-md transform hover:scale-105"
+              className="flex items-center space-x-2 bg-white text-green-700 font-bold py-3 px-6 rounded-lg hover:bg-green-50 transition-all shadow-md transform hover:scale-105"
             >
               <Plus size={20} />
               <span>Create Plan</span>
@@ -141,8 +141,8 @@ const PlansPage = () => {
         {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <div className="bg-white p-4 rounded-xl shadow-md flex items-center">
-            <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
-              <Book className="h-6 w-6 text-blue-600" />
+            <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
+              <Book className="h-6 w-6 text-green-600" />
             </div>
             <div>
               <p className="text-gray-500 text-sm">Total Plans</p>
@@ -151,8 +151,8 @@ const PlansPage = () => {
           </div>
           
           <div className="bg-white p-4 rounded-xl shadow-md flex items-center">
-            <div className="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
-              <BookOpen className="h-6 w-6 text-indigo-600" />
+            <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
+              <BookOpen className="h-6 w-6 text-green-600" />
             </div>
             <div>
               <p className="text-gray-500 text-sm">Most Popular</p>
@@ -161,8 +161,8 @@ const PlansPage = () => {
           </div>
           
           <div className="bg-white p-4 rounded-xl shadow-md flex items-center">
-            <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
-              <Sparkles className="h-6 w-6 text-purple-600" />
+            <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
+              <Sparkles className="h-6 w-6 text-green-600" />
             </div>
             <div>
               <p className="text-gray-500 text-sm">New This Week</p>
@@ -182,7 +182,7 @@ const PlansPage = () => {
               <input
                 type="text"
                 placeholder="Search plans by title, description, or tags..."
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -192,7 +192,7 @@ const PlansPage = () => {
             <div className="hidden md:flex space-x-2">
               {/* Category Dropdown */}
               <select
-                className="border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-green-500 focus:border-green-500"
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
               >
@@ -205,7 +205,7 @@ const PlansPage = () => {
 
               {/* Skill Level Dropdown */}
               <select
-                className="border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-green-500 focus:border-green-500"
                 value={selectedSkillLevel}
                 onChange={(e) => setSelectedSkillLevel(e.target.value)}
               >
@@ -218,7 +218,7 @@ const PlansPage = () => {
 
               {/* Sort By Dropdown */}
               <select
-                className="border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-green-500 focus:border-green-500"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
               >
@@ -234,7 +234,7 @@ const PlansPage = () => {
             <div className="md:hidden relative">
               <button
                 onClick={() => setFilterMenuOpen(!filterMenuOpen)}
-                className="flex items-center justify-center w-full space-x-2 px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg border border-indigo-200"
+                className="flex items-center justify-center w-full space-x-2 px-4 py-2 bg-green-50 text-green-700 rounded-lg border border-green-200"
               >
                 <Filter size={18} />
                 <span>Filters</span>
@@ -251,7 +251,7 @@ const PlansPage = () => {
                       Category
                     </label>
                     <select
-                      className="w-full border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-green-500 focus:border-green-500"
                       value={selectedCategory}
                       onChange={(e) => setSelectedCategory(e.target.value)}
                     >
@@ -268,7 +268,7 @@ const PlansPage = () => {
                       Skill Level
                     </label>
                     <select
-                      className="w-full border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-green-500 focus:border-green-500"
                       value={selectedSkillLevel}
                       onChange={(e) => setSelectedSkillLevel(e.target.value)}
                     >
@@ -285,7 +285,7 @@ const PlansPage = () => {
                       Sort By
                     </label>
                     <select
-                      className="w-full border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-green-500 focus:border-green-500"
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
                     >
@@ -305,7 +305,7 @@ const PlansPage = () => {
         {/* Loading, Error and Results */}
         {isLoading ? (
           <div className="flex justify-center items-center p-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-700"></div>
           </div>
         ) : error ? (
           <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg">
@@ -320,7 +320,7 @@ const PlansPage = () => {
             </p>
             <Link 
               to="/create-plan" 
-              className="mt-4 inline-flex items-center space-x-2 bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+              className="mt-4 inline-flex items-center space-x-2 bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 transition-colors"
             >
               <Plus size={16} />
               <span>Create Plan</span>
@@ -330,7 +330,7 @@ const PlansPage = () => {
           <>
             <div className="flex justify-between items-center mb-4">
               <p className="text-gray-700 font-medium">
-                Showing <span className="font-bold text-blue-700">{filteredPlans.length}</span> 
+                Showing <span className="font-bold text-green-700">{filteredPlans.length}</span> 
                 {filteredPlans.length !== plans.length && (
                   <> out of <span className="font-bold">{plans.length}</span></>
                 )} plans
@@ -343,7 +343,7 @@ const PlansPage = () => {
                     setSelectedSkillLevel("All");
                     setSearchQuery("");
                   }}
-                  className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                  className="text-green-600 hover:text-green-800 text-sm font-medium"
                 >
                   Clear all filters
                 </button>
